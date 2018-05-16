@@ -23,6 +23,7 @@ $(
       it("each url is defined", function() {
         allFeeds.forEach(feed => {
           expect(feed.url).toBeDefined();
+          expect(feed.url).not.toBe("");
         });
       });
 
@@ -30,6 +31,7 @@ $(
       it("each name is defined", function() {
         allFeeds.forEach(feed => {
           expect(feed.name).toBeDefined();
+          expect(feed.name).not.toBe("");
         });
       });
     });
@@ -53,6 +55,8 @@ $(
 
         // returning to first menu position.
         $(".menu-icon-link").trigger("click");
+
+        expect($("body").hasClass("menu-hidden")).toBe(currentStatus);
       });
     });
 
@@ -70,7 +74,7 @@ $(
 
       // Checking if there's at least one entry.
       it("are created", function() {
-        expect($("a.entry-link").length).toBeGreaterThan(0);
+        expect($('.feed').children().length).toBeGreaterThan(0);
       });
     });
 
